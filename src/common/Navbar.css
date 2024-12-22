@@ -1,0 +1,15 @@
+.active{
+    color:white;
+    text-decoration:double;
+}
+
+/* For body or the root element */
+body {
+    background-color: #ffffff;
+  }
+  
+  body.dark {
+    background-color: #121212;
+    color: white;
+  }
+  
