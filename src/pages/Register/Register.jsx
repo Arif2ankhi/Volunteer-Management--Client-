@@ -4,13 +4,14 @@ import Lottie from "lottie-react";
 import registerLottieData from "../../assets/lottie/register1.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../../context/AuthContext/AuthContext";
+// import SocialHandle from "../../common/SocialHandle/SocialHandle";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FcGoogle } from "react-icons/fc";
 import SocialHandle from "../../common/SocialHandle/SocialHandle";
 
 const Register = () => {
-
-  const {createUser} = useContext(AuthContext);
-  const [success, setSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const { createUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -19,22 +20,16 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-
-    // Reset messages
-    setErrorMessage("");
-    setSuccess(false);
 
     // Password validation
     if (password.length < 6) {
-      setErrorMessage("Password should be at least 6 characters long");
+      toast.error("Password should be at least 6 characters long");
       return;
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-
     if (!passwordRegex.test(password)) {
-      setErrorMessage(
+      toast.error(
         "Password must have at least one uppercase letter, one lowercase letter and must be at least 6 characters long"
       );
       return;
@@ -44,17 +39,33 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setSuccess(true);
-        navigate("/");
+        toast.success("Registration successful!");
+        setTimeout(() => navigate("/"), 3000); // Redirect after 3 seconds
       })
       .catch((error) => {
         console.log(error.message);
-        setErrorMessage(error.message);
+        if (error.message.includes("auth/email-already-in-use")) {
+          toast.error("Account with this email already exists.");
+        } else {
+          toast.error(error.message);
+        }
       });
   };
 
   return (
     <div className="hero bg-base-100 min-h-screen">
+      <ToastContainer 
+        position="top-right" 
+        autoClose={5000} 
+        hideProgressBar={false} 
+        newestOnTop={false} 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+        theme="light" 
+      />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-96">
           <Lottie animationData={registerLottieData}></Lottie>
@@ -123,16 +134,12 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
-          <SocialHandle></SocialHandle>
+          {/* Google log in  */}
 
-          {errorMessage && (
-            <p className="text-red-600 mt-2">{errorMessage}</p>
-          )}
-          {success && (
-            <p className="text-green-600 font-bold mt-2">
-              Registration successful.
-            </p>
-          )}
+          <div className="m-4 "> 
+            <SocialHandle></SocialHandle>
+
+            </div>
           <p className="ml-4 mb-4 font-bold">
             Already have an account? Please
             <Link className="m-2 text-blue-500 font-bold" to="/signin">
@@ -146,4 +153,5 @@ const Register = () => {
 };
 
 export default Register;
+
 

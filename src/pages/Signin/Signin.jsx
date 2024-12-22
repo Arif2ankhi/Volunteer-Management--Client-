@@ -1,33 +1,60 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// // import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
+// import logInLottieData from "../../assets/Lottie/signin2.json";
+// import SocialHandle from "../../common/SocialHandle/SocialHandle";
+// import { useContext } from "react";
+// import AuthContext from "../../context/AuthContext/AuthContext";
+// import Swal from "sweetalert2";
+// import { Link } from "react-router-dom";
 
-// const Signin = () => {
+// const SignIn = () => {
+//   const { signInUser } = useContext(AuthContext);
 
 //   const handleSignIn = (e) => {
 //     e.preventDefault();
 //     const form = e.target;
 //     const email = form.email.value;
 //     const password = form.password.value;
-//     console.log(email, password);
-//   }
 
+//     signInUser(email, password)
+//       .then((result) => {
+//         console.log("sign in", result.user);
 
+//         // SweetAlert for successful sign-in
+//         Swal.fire({
+//           icon: "success",
+//           title: "Sign In Successful!",
+//           text: "Welcome back!",
+//           showConfirmButton: false,
+//           timer: 1500,
+//         });
 
-//     return (
-//         <div className="card bg-cyan-200 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-//       <div className="hero-content flex-col">
+//         // Redirect or further actions can go here
+//         form.reset(); // Clear the form after successful sign-in
+//       })
+//       .catch((error) => {
+//         console.error(error);
+
+//         // SweetAlert for sign-in error
+//         Swal.fire({
+//           icon: "error",
+//           title: "Sign In Failed",
+//           text: "Invalid email or password. Please try again.",
+//         });
+//       });
+//   };
+
+//   return (
+//     <div className="hero bg-base-200 min-h-screen">
+//       <div className="hero-content flex-col lg:flex-row-reverse">
 //         <div className="text-center lg:text-left">
-//           <h1 className="text-5xl ml-4 font-bold text-cyan-800 text-center">
-//             Signin
-//           </h1>
+//           <Lottie animationData={logInLottieData}></Lottie>
 //         </div>
 //         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+//           <h1 className="ml-8 mt-4 text-5xl font-bold">Sign In!</h1>
 //           <form onSubmit={handleSignIn} className="card-body">
-//           {/* <form className="card-body"> */}
 //             <div className="form-control">
 //               <label className="label">
-//                 <span className="label-text font-bold">Email</span>
+//                 <span className="label-text">Email</span>
 //               </label>
 //               <input
 //                 type="email"
@@ -39,7 +66,7 @@
 //             </div>
 //             <div className="form-control">
 //               <label className="label">
-//                 <span className="label-text font-bold">Password</span>
+//                 <span className="label-text">Password</span>
 //               </label>
 //               <input
 //                 type="password"
@@ -48,96 +75,248 @@
 //                 className="input input-bordered"
 //                 required
 //               />
-
-             
 //             </div>
 //             <div className="form-control mt-6">
-//               <button className="btn btn-primary text-2xl font-bold mb-4">
-//                 Signin
-//               </button>
-//               {/* <button
-//                 onClick={handleGoogleSignIn}
-//                 className="btn btn-primary  text-2xl font-bold mt-4"
-//               >
-//                  <FcGoogle /> Signin With Google
-//               </button> */}
-//               {/* </div> */}
+//               <button className="btn btn-primary">Sign In</button>
 //             </div>
 //           </form>
+//         {/* Redirect to register  */}
 
-//           {/* {success && <p className="text-green-600">Logged in successfully!</p>}
-//           {logInError && <p className="text-red-600">{logInError}</p>} */}
-
-//           <p className="ml-4 mb-4 font-bold">
+//         <p className="ml-4 mb-4 font-bold">
 //             New to this website ? please
 //             <Link className="m-2 text-red-500 font-bold" to="/register">
 //               Register
 //             </Link>
 //           </p>
+
+//           <SocialHandle></SocialHandle>
 //         </div>
 //       </div>
 //     </div>
-        
-//     );
+//   );
 // };
 
-// export default Signin;
+// export default SignIn;
+
+// import Lottie from "lottie-react";
+// import logInLottieData from "../../assets/Lottie/signin2.json";
+// import SocialHandle from "../../common/SocialHandle/SocialHandle";
+// import { useContext } from "react";
+// import AuthContext from "../../context/AuthContext/AuthContext";
+// import Swal from "sweetalert2";
+// import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+// import { ToastContainer } from "react-toastify"; // Import ToastContainer
+// import "react-toastify/dist/ReactToastify.css"; // Import Toast styles
+
+// const SignIn = () => {
+//   const { signInUser } = useContext(AuthContext);
+//   const navigate = useNavigate(); // Initialize useNavigate for navigation
+
+//   const handleSignIn = (e) => {
+//     e.preventDefault();
+//     const form = e.target;
+//     const email = form.email.value;
+//     const password = form.password.value;
+
+//     signInUser(email, password)
+//       .then((result) => {
+//         console.log("sign in", result.user);
+
+//         // SweetAlert for successful sign-in
+//         Swal.fire({
+//           icon: "success",
+//           title: "Sign In Successful!",
+//           text: "Welcome back!",
+//           showConfirmButton: false,
+//           timer: 1500,
+//         });
+
+//         // Redirect to home page after successful sign-in
+//         navigate("/"); // Redirect to the home page
+
+//         form.reset(); // Clear the form after successful sign-in
+//       })
+//       .catch((error) => {
+//         console.error(error);
+
+//         // SweetAlert for sign-in error
+//         Swal.fire({
+//           icon: "error",
+//           title: "Sign In Failed",
+//           text: "Invalid email or password. Please try again.",
+//         });
+//       });
+//   };
+
+//   return (
+//     <div className="hero bg-base-200 min-h-screen">
+//       <div className="hero-content flex-col lg:flex-row-reverse">
+//         <div className="text-center lg:text-left">
+//           <Lottie animationData={logInLottieData}></Lottie>
+//         </div>
+//         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+//           <h1 className="ml-8 mt-4 text-5xl font-bold">Sign In!</h1>
+//           <form onSubmit={handleSignIn} className="card-body">
+//             <div className="form-control">
+//               <label className="label">
+//                 <span className="label-text">Email</span>
+//               </label>
+//               <input
+//                 type="email"
+//                 name="email"
+//                 placeholder="email"
+//                 className="input input-bordered"
+//                 required
+//               />
+//             </div>
+//             <div className="form-control">
+//               <label className="label">
+//                 <span className="label-text">Password</span>
+//               </label>
+//               <input
+//                 type="password"
+//                 name="password"
+//                 placeholder="password"
+//                 className="input input-bordered"
+//                 required
+//               />
+//             </div>
+//             <div className="form-control mt-6">
+//               <button className="btn btn-primary">Sign In</button>
+//             </div>
+//           </form>
+//           {/* Redirect to register */}
+//           <p className="ml-4 mb-4 font-bold">
+//             New to this website? Please
+//             <Link className="m-2 text-red-500 font-bold" to="/register">
+//               Register
+//             </Link>
+//           </p>
+
+//           {/* Social SignIn Handle */}
+//           <SocialHandle />
+//         </div>
+//       </div>
+
+//       {/* ToastContainer for toasts */}
+//       <ToastContainer 
+//         position="top-right"
+//         autoClose={5000}
+//         hideProgressBar={false}
+//         newestOnTop={false}
+//         closeOnClick
+//         rtl={false}
+//         pauseOnFocusLoss
+//         draggable
+//         pauseOnHover
+//         theme="light"
+//       />
+//     </div>
+//   );
+// };
+
+// export default SignIn;
+
 
 import Lottie from "lottie-react";
 import logInLottieData from "../../assets/Lottie/signin2.json";
-// import SocialLogin from '../shared/SocialLogin';
 import SocialHandle from "../../common/SocialHandle/SocialHandle";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-
+import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { ToastContainer } from "react-toastify"; // Import ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // Import Toast styles
 
 const SignIn = () => {
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false); // Optional: handle loading state
+  const navigate = useNavigate(); // Initialize useNavigate for navigation
 
-  const { signInUser} = useContext(AuthContext);
-    // const {signInUser} = useContext(AuthContext);
-    // const location = useLocation();
-    // // const navigate = useNavigate();
-    // console.log('in signIn page', location);
-    // // const from = location.state || '/;'
+  // Sign-in handler (email/password)
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    const handleSignIn = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+    setLoading(true);
 
-        signInUser(email, password)
-        .then(result => {
-            console.log('sign in', result.user);
-        })
-            
-        .catch(error => {
-            console.log( error);
+    signInUser(email, password)
+      .then((result) => {
+        console.log("sign in", result.user);
+        // SweetAlert for successful sign-in
+        Swal.fire({
+          icon: "success",
+          title: "Sign In Successful!",
+          text: "Welcome back!",
+          showConfirmButton: false,
+          timer: 1500,
         });
 
+        // Redirect to home page after successful sign-in
+        navigate("/"); // Redirect to home page
 
-}
-    return (
-        <div className="hero bg-base-200 min-h-screen">
+        form.reset(); // Clear the form after successful sign-in
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Sign In Failed",
+          text: "Invalid email or password. Please try again.",
+        });
+        setLoading(false);
+      });
+  };
+
+  // Handle Google sign-in
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+
+    signInWithGoogle()
+      .then((result) => {
+        console.log("Google sign-in successful", result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Sign In Successful!",
+          text: "Welcome back with Google!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        // Redirect to home page after successful Google sign-in
+        navigate("/"); // Redirect to home page
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Sign In Failed",
+          text: error.message,
+        });
+        setLoading(false);
+      });
+  };
+
+  return (
+    <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          
-          <Lottie animationData={logInLottieData }></Lottie>
+          <Lottie animationData={logInLottieData}></Lottie>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className=" ml-8 mt-4 text-5xl font-bold">Log In!</h1>
-          <form  onSubmit = {handleSignIn} className="card-body">
+          <h1 className="ml-8 mt-4 text-5xl font-bold">Sign In!</h1>
+          <form onSubmit={handleSignIn} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                name= "email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -154,17 +333,43 @@ const SignIn = () => {
                 className="input input-bordered"
                 required
               />
-              
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Signin</button>
+              <button className="btn btn-primary" disabled={loading}>
+                Sign In
+              </button>
             </div>
           </form>
-          <SocialHandle></SocialHandle>
+          <p className="ml-4 mb-4 font-bold">
+            New to this website? Please
+            <Link className="m-2 text-red-500 font-bold" to="/register">
+              Register
+            </Link>
+          </p>
+
+          
+          {/* Social Handle (Google) */}
+          <SocialHandle />
         </div>
       </div>
+
+      {/* ToastContainer for toasts */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
-    );
+  );
 };
 
 export default SignIn;
+
+
