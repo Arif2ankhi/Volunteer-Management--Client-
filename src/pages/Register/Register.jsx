@@ -158,13 +158,16 @@
 
 // export default Register;
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import registerLottieData from "../../assets/lottie/register.json";
+import registerLottieData from "../../assets/lottie/register1.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Register = () => {
+
+  const {createUser} = useContext(AuthContext);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -201,7 +204,7 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
         setSuccess(true);
-        navigate("/dashboard");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);

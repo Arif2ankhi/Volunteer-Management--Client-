@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import Lottie from "lottie-react";
 
 const Signin = () => {
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  }
+
+
+
     return (
         <div className="card bg-cyan-200 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <div className="hero-content flex-col">
@@ -11,8 +23,8 @@ const Signin = () => {
           </h1>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          {/* <form onSubmit={handleLogIn} className="card-body"> */}
-          <form className="card-body">
+          <form onSubmit={handleSignIn} className="card-body">
+          {/* <form className="card-body"> */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Email</span>
