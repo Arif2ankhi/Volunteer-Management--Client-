@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
         <div className="text-center mt-08">
           <p className="text-black font-semibold mt-6">
-             @Copyright Discount pro Coupon. All Rights Reserved.
+             @Copyright Volunteer Management. All Rights Reserved.
           </p>
         </div>
       </div>
@@ -78,4 +78,4 @@ const Footer = () => {
   );
 };
 
-export default Footer
+export default Footer;
