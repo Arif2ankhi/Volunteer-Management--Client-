@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import registerLottieData from "../../assets/lottie/register1.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialHandle from "../../common/SocialHandle/SocialHandle";
 
 const Register = () => {
 
@@ -53,13 +54,13 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-100 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-96">
           <Lottie animationData={registerLottieData}></Lottie>
         </div>
-        <div className="card bg-orange-200 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="ml-8 mt-4 text-5xl font-bold">Register now!</h1>
+        <div className="card bg-orange-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <h1 className="ml-8 mt-4 text-5xl font-bold text-green-800">Register</h1>
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -122,6 +123,8 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
+          <SocialHandle></SocialHandle>
+
           {errorMessage && (
             <p className="text-red-600 mt-2">{errorMessage}</p>
           )}
