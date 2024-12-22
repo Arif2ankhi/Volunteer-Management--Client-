@@ -11,7 +11,7 @@ const ErrorPage = () => {
         <Link to="/">
         
         <button className="w-full lg:w-auto my-4 border rounded-2xl px-1 sm:px-16 py-5
-         text-black text-2xl font-extrabold hover: bg-[#9538E2]  border-black mt-16 ">Back to Home Page</button>
+         text-black text-2xl font-extrabold hover: bg-red-400  border-black mt-16 ">Back to Home Page</button>
         
         </Link>
 

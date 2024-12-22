@@ -7,6 +7,7 @@ const MainLayout = () => {
         <div className="w-10/12 mx-auto">
             <Navbar></Navbar>
             <Outlet></Outlet>
+            
         </div>
     );
 };
