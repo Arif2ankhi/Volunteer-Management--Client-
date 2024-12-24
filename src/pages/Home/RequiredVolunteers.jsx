@@ -1,28 +1,68 @@
-import React, { useEffect, useState } from 'react';
-import VolunteerCard from './VolunteerCard';
+// import React, { useEffect, useState } from 'react';
+// import VolunteerCard from './VolunteerCard';
+
+// const RequiredVolunteers = () => {
+//     const [volunteers, setVolunteers] = useState([]);
+
+//     useEffect(() =>{
+//         fetch('http://localhost:5000/volunteers')
+//         .then(res => res.json())
+//         .then(data => {
+//             setVolunteers(data);
+//     })
+
+//     }, []) 
+
+//     return (
+//         <div>
+//             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+//                 {
+//                     volunteers.map(volunteer =><VolunteerCard key={volunteer._id} volunteer ={volunteer}></VolunteerCard>)
+                       
+//                 }
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default RequiredVolunteers;
+
+import  { useEffect, useState } from "react";
+import VolunteerCard from "./VolunteerCard";
+import { useNavigate } from "react-router-dom";
 
 const RequiredVolunteers = () => {
-    const [volunteers, setVolunteers] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() =>{
-        fetch('http://localhost:5000/volunteers')
-        .then(res => res.json())
-        .then(data => {
-            setVolunteers(data);
-    })
+  useEffect(() => {
+    fetch("http://localhost:5000/volunteers")
+      .then((res) => res.json())
+      .then((data) => {
+        const sortedVolunteers = data.sort(
+          (a, b) => new Date(a.deadline) - new Date(b.deadline)
+        );
+        setVolunteers(sortedVolunteers.slice(0, 6)); // Limit to 6 items
+      });
+  }, []);
 
-    }, []) 
-
-    return (
-        <div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {
-                    volunteers.map(volunteer =><VolunteerCard key={volunteer._id} volunteer ={volunteer}></VolunteerCard>)
-                       
-                }
-            </div>
-        </div>
-    );
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {volunteers.map((volunteer) => (
+          <VolunteerCard key={volunteer._id} volunteer={volunteer}></VolunteerCard>
+        ))}
+      </div>
+      <div className="text-center mt-6">
+        <button
+          onClick={() => navigate("/volunteerNeedPost")}
+          className="btn btn-outline btn-primary"
+        >
+          See All
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default RequiredVolunteers;
