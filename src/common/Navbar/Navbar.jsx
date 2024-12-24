@@ -7,6 +7,7 @@ import Swal from "sweetalert2"; // Import SweetAlert2
 import "../Navbar.css";
 import AuthContext from "../../context/AuthContext/AuthContext";
 
+
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
 
@@ -76,7 +77,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-50">
+    <div className="navbar bg-cyan-100 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -120,7 +121,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-green-950">HelpHive</a>
+        <a className="btn btn-ghost text-xl text-green-950 animate__animated animate__flip animate__slow animate__repeat 3 3">HelpHive</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

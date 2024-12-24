@@ -11,6 +11,8 @@ import AllVolunteerNeedPost from "../pages/AllVolunteerNeedPost/AllVolunteerNeed
 import AddVolunteerNeedPost from "../pages/AddVolunteerNeedPost/AddVolunteerNeedPost";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
+import PrivateRoute from "./PrivateRoute";
+import VolunteerDetails from "../pages/VolunteerDetails/VolunteerDetails";
 
 
   const router = createBrowserRouter([
@@ -24,6 +26,12 @@ import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
             element: <Home></Home>
         },
         {
+          path:'/volunteers/:id',
+          element:<VolunteerDetails></VolunteerDetails>,
+          loader: ({params}) => fetch (`http://localhost:5000/volunteers/${params.id}`)
+
+        },
+        {
             path:'register',
             element:<Register></Register>
         },
@@ -35,7 +43,8 @@ import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
         },
         {
           path:'addVolunteer',
-          element:<AddVolunteerNeedPost></AddVolunteerNeedPost>
+          element:<PrivateRoute><AddVolunteerNeedPost></AddVolunteerNeedPost></PrivateRoute>
+          // element:<AddVolunteerNeedPost></AddVolunteerNeedPost>
         },
         {
           path:'manageMyPost',

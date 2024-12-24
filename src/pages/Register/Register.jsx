@@ -7,7 +7,6 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 // import SocialHandle from "../../common/SocialHandle/SocialHandle";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FcGoogle } from "react-icons/fc";
 import SocialHandle from "../../common/SocialHandle/SocialHandle";
 
 const Register = () => {

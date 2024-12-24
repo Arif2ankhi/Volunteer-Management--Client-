@@ -1,17 +1,18 @@
-import { HiH1 } from "react-icons/hi2";
+
+import { Link } from "react-router-dom";
 
 
 
 // eslint-disable-next-line react/prop-types
 const VolunteerCard = ({volunteer}) => {
   // eslint-disable-next-line react/prop-types
-  const { thumbnail, postTitle, category, deadline } = volunteer;
+  const { _id, thumbnail, postTitle, category, deadline } = volunteer;
   return (
        
 
-    <div className="card card-compact bg-base-100  shadow-xl">
+    <div className="card card-compact bg-orange-100  shadow-xl">
       <figure>
-        <img className='w-96 h-64 rounded-2xl'
+        <img className='w-96 h-64 rounded-2xl p-2'
           src={thumbnail}
           alt="Shoes"
         />
@@ -22,7 +23,12 @@ const VolunteerCard = ({volunteer}) => {
         <p className="text-xl font-extrabold justify-center text-center  text-purple-800">Deadline: {deadline}</p>
         
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">View Details</button>
+            <Link to={`/volunteers/${_id}`}>
+            <button className="btn btn-primary">View Details</button>
+            </Link>
+
+
+          
         </div>
       </div>
     </div>
