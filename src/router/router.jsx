@@ -13,6 +13,7 @@ import MyProfile from "../pages/MyProfile/MyProfile";
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import PrivateRoute from "./PrivateRoute";
 import VolunteerDetails from "../pages/VolunteerDetails/VolunteerDetails";
+import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
 
 
   const router = createBrowserRouter([
@@ -27,9 +28,15 @@ import VolunteerDetails from "../pages/VolunteerDetails/VolunteerDetails";
         },
         {
           path:'/volunteers/:id',
-          element:<VolunteerDetails></VolunteerDetails>,
+          element:<PrivateRoute><VolunteerDetails></VolunteerDetails>,</PrivateRoute>,
           loader: ({params}) => fetch (`http://localhost:5000/volunteers/${params.id}`)
-
+        },
+        {
+          path: '/volunteerApply/:id',
+          element:<PrivateRoute><VolunteerApply></VolunteerApply></PrivateRoute>,
+          // loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`),
+          loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`)
+          
         },
         {
             path:'register',
@@ -44,7 +51,7 @@ import VolunteerDetails from "../pages/VolunteerDetails/VolunteerDetails";
         {
           path:'addVolunteer',
           element:<PrivateRoute><AddVolunteerNeedPost></AddVolunteerNeedPost></PrivateRoute>
-          // element:<AddVolunteerNeedPost></AddVolunteerNeedPost>
+          
         },
         {
           path:'manageMyPost',

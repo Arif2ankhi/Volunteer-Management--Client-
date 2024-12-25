@@ -4,14 +4,17 @@ import SocialHandle from "../../common/SocialHandle/SocialHandle";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 import { ToastContainer } from "react-toastify"; // Import ToastContainer
 import "react-toastify/dist/ReactToastify.css"; // Import Toast styles
 
 const SignIn = () => {
   const { signInUser, signInWithGoogle } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false); // Optional: handle loading state
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate(); 
+  const location = useLocation();
+  console.log('in sign in page', location);
+  const from = location.state || '/';
 
   // Sign-in handler (email/password)
   const handleSignIn = (e) => {
@@ -25,6 +28,7 @@ const SignIn = () => {
     signInUser(email, password)
       .then((result) => {
         console.log("sign in", result.user);
+        navigate(from);
         // SweetAlert for successful sign-in
         Swal.fire({
           icon: "success",
