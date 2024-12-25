@@ -121,7 +121,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-green-950 animate__animated animate__flip animate__slow animate__repeat 3 3">HelpHive</a>
+        <a className="btn btn-ghost text-xl text-green-950 animate__animated animate__flip animate__slow animate__repeat 3 3">HelpNest</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

@@ -14,6 +14,9 @@ import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import PrivateRoute from "./PrivateRoute";
 import VolunteerDetails from "../pages/VolunteerDetails/VolunteerDetails";
 import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
+import Update from "../pages/Update/Update";
+import MyVolunteerNeed from "../pages/MyVolunteerNeed/MyVolunteerNeed";
+import MyVolunteerRequest from "../pages/MyVolunteerRequest/MyVolunteerRequest";
 
 
   const router = createBrowserRouter([
@@ -34,7 +37,6 @@ import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
         {
           path: '/volunteerApply/:id',
           element:<PrivateRoute><VolunteerApply></VolunteerApply></PrivateRoute>,
-          // loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`),
           loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`)
           
         },
@@ -45,7 +47,7 @@ import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
 
         {
           path:'volunteerNeedPost',
-          element:<AllVolunteerNeedPost></AllVolunteerNeedPost>
+          element:<PrivateRoute><AllVolunteerNeedPost></AllVolunteerNeedPost></PrivateRoute>
 
         },
         {
@@ -55,7 +57,7 @@ import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
         },
         {
           path:'manageMyPost',
-          element:<ManageMyPost></ManageMyPost>
+          element:<PrivateRoute><ManageMyPost></ManageMyPost></PrivateRoute>
         },
 
         {
@@ -67,6 +69,19 @@ import VolunteerApply from "../pages/VolunteerApply/VolunteerApply";
             path:'signin',
             element:<Signin></Signin>
         },
+        {
+          path:'update',
+          element:<Update></Update>
+        },
+        {
+          path:'myVolunteerNeed',
+          element:<MyVolunteerNeed></MyVolunteerNeed>
+        },
+        {
+          path:'myVolunteerRequest',
+          element:<PrivateRoute><MyVolunteerRequest></MyVolunteerRequest></PrivateRoute>
+
+        }
 
         
       ]

@@ -22,7 +22,7 @@ const VolunteerCard = ({volunteer}) => {
         <p className="text-xl font-extrabold justify-center text-center  text-orange-800">{category}</p>
         <p className="text-xl font-extrabold justify-center text-center  text-purple-800">Deadline: {deadline}</p>
         
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-center">
             <Link to={`/volunteers/${_id}`}>
             <button className="btn btn-primary">View Details</button>
             </Link>

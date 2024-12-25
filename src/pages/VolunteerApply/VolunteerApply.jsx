@@ -70,7 +70,7 @@ const VolunteerApply = () => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl p-6">
+    <div className="card bg-red-300 shadow-xl p-6">
       <h2 className="text-2xl font-bold text-center mb-4">Be a Volunteer</h2>
       <div className="grid grid-cols-1 gap-4">
         {/* Read-only fields */}
@@ -130,7 +130,7 @@ const VolunteerApply = () => {
         </div>
       </div>
 
-      <button className="btn btn-primary mt-4" onClick={handleSubmit}>
+      <button className="btn bg-emerald-600 btn-primary mt-4" onClick={handleSubmit}>
         Request
       </button>
 
