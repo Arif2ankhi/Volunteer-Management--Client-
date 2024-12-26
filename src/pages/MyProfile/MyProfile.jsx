@@ -6,12 +6,12 @@ const MyProfile = () => {
     return (
         <div className=' w-full font extrabold text-orange-600 text-7xl gap-10 bg-emerald-300 mr-24 py-40 space-x-20'>
              <Marquee pauseOnHover={true} speed={100} className=''> 
-                <Link to="/myVolunteerNeed">
+                {/* <Link to="/myVolunteerNeed">
                  <span className='mr-36'>Volunteer Need</span>
                  
-                </Link>
+                </Link> */}
                 <Link to="/myVolunteerNeed">
-                <span className='text-purple-700 ml-20'> Click me for more details  </span>
+                <span className='text-purple-700 ml-20'> Click here for more details  </span>
                
 
                 </Link>

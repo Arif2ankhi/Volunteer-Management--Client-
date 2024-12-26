@@ -44,7 +44,7 @@ const VolunteerApply = () => {
     };
 
 
-    fetch('http://localhost:5000/requests', {
+    fetch('https://volunteer-management-server-ten.vercel.app/requests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

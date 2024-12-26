@@ -2,6 +2,7 @@
 // import  {  useState } from 'react';
 
 import MyVolunteerNeed from '../MyVolunteerNeed/MyVolunteerNeed';
+import MyVolunteerRequest from '../MyVolunteerRequest/MyVolunteerRequest';
 
 
 
@@ -11,7 +12,7 @@ const ManageMyPost = () => {
 
     return (
         <div>
-            <h1 className="text-3xl text-orange-700  text-center font-bold mb-4">Manage My Posts</h1>
+            <h1 className="text-3xl text-orange-700  text-center font-bold mb-4">Manage  Posts</h1>
             
             <section>
                 <h2 className="text-2xl text-blue-700  mb-2 text-center font-bold"> </h2>
@@ -26,7 +27,7 @@ const ManageMyPost = () => {
                 <MyVolunteerRequest></MyVolunteerRequest>
 
                 
-            </section> */}
+            </section>  */}
         </div>
     );
 };

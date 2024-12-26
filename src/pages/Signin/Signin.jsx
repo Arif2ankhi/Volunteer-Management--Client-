@@ -31,7 +31,7 @@ const SignIn = () => {
         console.log("sign in", result.user.email);
         const user = {email: email}
         // axios functionality starts from here
-        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+        axios.post('https://volunteer-management-server-ten.vercel.app/jwt', user, {withCredentials: true})
         .then(res=>{
           console.log(res.data);
         })

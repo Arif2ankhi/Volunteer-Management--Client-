@@ -8,7 +8,7 @@ const AllVolunteerNeedPost = () => {
   const [selectedCategory, setSelectedCategory] = useState(""); 
 
   useEffect(() => {
-    fetch('http://localhost:5000/volunteers')
+    fetch('https://volunteer-management-server-ten.vercel.app/volunteers')
       .then((res) => res.json())
       .then((data) => {
         const sortedVolunteers = data.sort(
@@ -87,7 +87,7 @@ export default AllVolunteerNeedPost;
 //   const [selectedCategory, setSelectedCategory] = useState(""); 
 
 //   useEffect(() => {
-//     fetch("http://localhost:5000/volunteers")
+//     fetch("https://volunteer-management-server-ten.vercel.app/volunteers")
 //       .then((res) => res.json())
 //       .then((data) => {
 //         const sortedVolunteers = data.sort(

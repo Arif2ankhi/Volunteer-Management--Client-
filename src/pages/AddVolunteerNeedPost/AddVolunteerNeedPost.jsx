@@ -15,7 +15,7 @@ const handleSubmit = (e) => {
     console.log(newVolunteer);
 
 
-    fetch('http://localhost:5000/volunteers', {
+    fetch('https://volunteer-management-server-ten.vercel.app/volunteers', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -204,7 +204,7 @@ export default AddVolunteerNeedPost;
 //     console.log(newVolunteer);
 
 
-//     fetch('http://localhost:5000/volunteers', {
+//     fetch('https://volunteer-management-server-ten.vercel.app/volunteers', {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'

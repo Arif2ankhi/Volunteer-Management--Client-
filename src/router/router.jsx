@@ -32,12 +32,12 @@ import MyVolunteerRequest from "../pages/MyVolunteerRequest/MyVolunteerRequest";
         {
           path:'/volunteers/:id',
           element:<PrivateRoute><VolunteerDetails></VolunteerDetails>,</PrivateRoute>,
-          loader: ({params}) => fetch (`http://localhost:5000/volunteers/${params.id}`)
+          loader: ({params}) => fetch (`https://volunteer-management-server-ten.vercel.app/volunteers/${params.id}`)
         },
         {
           path: '/volunteerApply/:id',
           element:<PrivateRoute><VolunteerApply></VolunteerApply></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`)
+          loader: ({ params }) => fetch(`https://volunteer-management-server-ten.vercel.app/volunteers/${params.id}`)
           
         },
         {
@@ -72,7 +72,7 @@ import MyVolunteerRequest from "../pages/MyVolunteerRequest/MyVolunteerRequest";
         {
           path: "update/:id",
           element: <PrivateRoute><Update /></PrivateRoute>,
-          // loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`),
+          // loader: ({ params }) => fetch(`https://volunteer-management-server-ten.vercel.app/volunteers/${params.id}`),
         },
         
         // {

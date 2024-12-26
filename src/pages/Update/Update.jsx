@@ -14,7 +14,7 @@ const Update = () => {
   });
 
   const onSubMIT = (data) => {
-    fetch(`http://localhost:5000/volunteers/${volunteer._id}`, {
+    fetch(`https://volunteer-management-server-ten.vercel.app/volunteers/${volunteer._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export default Update;
 //     useEffect(() => {
 //         const fetchPostData = async () => {
 //             try {
-//                 const response = await fetch(`http://localhost:5000/volunteers/${id}`);
+//                 const response = await fetch(`https://volunteer-management-server-ten.vercel.app/volunteers/${id}`);
 //                 if (response.ok) {
 //                     const data = await response.json();
 //                     // Populate the form with existing data
@@ -130,7 +130,7 @@ export default Update;
 
 //     const onSubmit = async (data) => {
 //         try {
-//             const response = await fetch(`http://localhost:5000/volunteers/${id}`, {
+//             const response = await fetch(`https://volunteer-management-server-ten.vercel.app/volunteers/${id}`, {
 //                 method: 'PUT',
 //                 headers: {
 //                     'Content-Type': 'application/json',
