@@ -73,6 +73,11 @@ const Navbar = () => {
           All Volunteer Need Post
         </NavLink>
       </li>
+      <li>
+        <NavLink className="text-xl text-black font-bold" to="/myVolunteerNeed">
+          My Volunteer Need Post
+        </NavLink>
+      </li>
     </>
   );
 
@@ -145,6 +150,7 @@ const Navbar = () => {
                     Manage My Post
                   </NavLink>
                 </li>
+                
               </ul>
             </details>
           </li>

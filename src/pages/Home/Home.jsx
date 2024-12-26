@@ -26,14 +26,7 @@ const Home = () => {
         <p className="text-center text-gray-700 max-w-2xl mx-auto">
           At our organization, we aim to bring positive change to the community by connecting volunteers with meaningful opportunities. Join us in making a difference.
         </p> 
-        {/* <motion.p
-        animate={{ x: 50 }}
-        transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}
-        className="text-5xl font-bold">
-            animate={{ color: ['#ecff33', '#33ffe3', '#ff6133'] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-        At our organization, we aim to bring positive change to the community by connecting volunteers with meaningful opportunities. Join us in making a difference.
-        </motion.p> */}
+        
 
       </section>
 

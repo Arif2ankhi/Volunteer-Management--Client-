@@ -53,20 +53,13 @@ Besides these following npm package has been implement to giving the applicatio 
 
 📌📌 Key Features: From Volunteer management   user can be a volunteer, thay can post and chhose the category on their choice to serve the socieaty . Admin can add , delete and update the application or others post in this application. 
 
-Assignment-10-Camellia :
+## Assignment-Category -10 Volunteer Management
 
 Private link:
 
-## Server link: 
 
-https://github.com/programming-hero-web-course2/b10a11-server-side-Arif2ankhi
 
- 
 
-## Client Link :
- https://github.com/programming-hero-web-course2/b10a11-client-side-Arif2ankhi
-
- 
 
 ### Project live link: 
 

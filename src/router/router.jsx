@@ -70,9 +70,15 @@ import MyVolunteerRequest from "../pages/MyVolunteerRequest/MyVolunteerRequest";
             element:<Signin></Signin>
         },
         {
-          path:'update',
-          element:<Update></Update>
+          path: "update/:id",
+          element: <PrivateRoute><Update /></PrivateRoute>,
+          // loader: ({ params }) => fetch(`http://localhost:5000/volunteers/${params.id}`),
         },
+        
+        // {
+        //   path:'update',
+        //   element:<Update></Update>
+        // },
         {
           path:'myVolunteerNeed',
           element:<MyVolunteerNeed></MyVolunteerNeed>

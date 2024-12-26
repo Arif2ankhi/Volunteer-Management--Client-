@@ -1,63 +1,94 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const MyVolunteerNeed = ({ posts }) => {
-    const navigate = useNavigate();
+const MyVolunteerNeed = () => {
+  const [volunteers, setVolunteers] = useState([]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                fetch(`http://localhost:5000/volunteerNeeds/${id}`, { method: 'DELETE' })
-                    .then(() => {
-                        Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
-                        window.location.reload(); // Refresh after deletion
-                    });
+  useEffect(() => {
+    fetch(`http://localhost:5000/volunteers?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setVolunteers(data));
+  }, [user.email]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/volunteers/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your post has been deleted.", "success");
+              setVolunteers(volunteers.filter((vol) => vol._id !== id));
             }
-        });
-    };
+          });
+      }
+    });
+  };
 
-    // if (posts.length === 0) {
-    //     return <p>No Volunteer Need Posts found.</p>;
-    // }
+  const handleUpdate = (id) => {
+    navigate(`/update/${id}`);
+  };
 
-    return (
-        <table className="w-full border-collapse border border-gray-300">
+  return (
+    <div>
+      <h2 className="text-2xl text-green-700 font-extrabold text-center">
+        Posted Volunteers: {volunteers.length}
+      </h2>
+      {volunteers.length === 0 ? (
+        <p className="text-center text-red-500 mt-4">No Volunteer Posts Found!</p>
+      ) : (
+        <div className="overflow-x-auto bg-red-200">
+          <table className="table">
             <thead>
-                <tr>
-                    <th className="border p-2">Thumbnail</th>
-                    <th className="border p-2">Title</th>
-                    <th className="border p-2">Actions</th>
-                </tr>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
-                {/* {posts.map((post) => (
-                    <tr key={post.id}>
-                        <td className="border p-2"><img src={post.thumbnail} alt={post.title} width="50" /></td>
-                        <td className="border p-2">{post.title}</td>
-                        <td className="border p-2">
-                            <button
-                                className="bg-blue-500 text-white px-3 py-1 mr-2"
-                                onClick={() => navigate(`/update/${post.id}`)}>
-                                Update
-                            </button>
-                            <button
-                                className="bg-red-500 text-white px-3 py-1"
-                                onClick={() => handleDelete(post.id)}>
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))} */}
+              {volunteers.map((volunteer, index) => (
+                <tr key={volunteer._id}>
+                  <th>{index + 1}</th>
+                  <td>{volunteer.postTitle}</td>
+                  <td>{volunteer.description}</td>
+                  <td>
+                    <button
+                      className="btn bg-orange-900 text-white mr-2"
+                      onClick={() => handleUpdate(volunteer._id)}
+                    >
+                      Update
+                    </button>
+                    <button
+                      className="btn bg-red-600 text-white"
+                      onClick={() => handleDelete(volunteer._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
-        </table>
-    );
+          </table>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default MyVolunteerNeed;
