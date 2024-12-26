@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import  { useContext } from 'react';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';

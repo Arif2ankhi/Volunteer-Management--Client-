@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
     return (
-        <div className='font extrabold text-orange-600 text-7xl gap-10 bg-emerald-300 my-64'>
-             <Marquee pauseOnHover={true} speed={100} className='space-x-10'> 
+        <div className=' w-full font extrabold text-orange-600 text-7xl gap-10 bg-emerald-300 mr-24 py-40 space-x-20'>
+             <Marquee pauseOnHover={true} speed={100} className=''> 
                 <Link to="/myVolunteerNeed">
-                My Volunteer Need 
+                 <span className='mr-36'>Volunteer Need</span>
+                 
                 </Link>
-                <Link to="/myVolunteerRequest">
-                My Volunteer Request 
+                <Link to="/myVolunteerNeed">
+                <span className='text-purple-700 ml-20'> Click me for more details  </span>
+               
+
                 </Link>
                 
 
