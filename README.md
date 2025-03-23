@@ -59,7 +59,7 @@ Besides these following npm package has been implement to giving the applicatio 
 
 ### Project live link: 
 
-https://volunteer-management-114f5.web.app/volunteerApply/6769fd728fe4b9621b98517b
+ https://volunteer-management-114f5.firebaseapp.com/
 
 ## Private link:
 
@@ -69,5 +69,13 @@ https://volunteer-management-114f5.web.app/volunteerApply/6769fd728fe4b9621b9851
 ### Server site: 
 
 https://github.com/programming-hero-web-course2/b10a11-server-side-Arif2ankhi
+
+## Public repo Client:
+
+https://github.com/Arif2ankhi/Volunteer-Management--Client-
+
+## Public repo server: 
+
+
 
 ## Thank You

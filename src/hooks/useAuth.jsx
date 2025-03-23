@@ -7,3 +7,10 @@ const useAuth = () => {
     return context;
 }
 export default useAuth;
+
+
+// import { createContext } from "react";
+
+// const AuthContext = createContext(null);
+
+// export default AuthContext;
